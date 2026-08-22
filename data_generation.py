@@ -302,12 +302,12 @@ print(f"Return rate, first-time vs repeat:\n{df.groupby('is_first_time_buyer')['
 
 # Full version, includes ground-truth columns - keep for your own
 # validation/debugging, do NOT train a model on this file.
-df.to_csv("return_risk/synthetic_orders_full.csv", index=False)
+df.to_csv("dSets/synthetic_orders_full.csv", index=False)
 
 # Production version - what the model should actually train on
 # (ground-truth leakage columns removed).
 model_df = df.drop(columns=["_latent_propensity", "p_return_true"])
-model_df.to_csv("return_risk/synthetic_orders_model.csv", index=False)
+model_df.to_csv("dSets/synthetic_orders_model.csv", index=False)
 
 print("\nSaved:")
 print(" - synthetic_orders_full.csv  (includes ground truth, for validation only)")
