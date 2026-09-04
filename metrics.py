@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.metrics import confusion_matrix, precision_score, recall_score, f1_score, classification_report
 
-preds = pd.read_csv("dSets/test_predictions.csv")
+preds = pd.read_csv("data/outputs/test_predictions.csv")
 y_true = preds["y_true"]
 probs = preds["log_reg_prob"]
 

@@ -71,5 +71,5 @@ df = pd.DataFrame(records)
 print(f"\nSuccessfully created and enriched {len(df)} / {N_ORDERS} orders")
 print(df.head())
 
-df.to_csv("test_mode_dSets/razorpay_enriched_orders.csv", index=False)
-print("\nSaved: test_mode_dSets/razorpay_enriched_orders.csv")
+df.to_csv("data/test_mode/razorpay_enriched_orders.csv", index=False)
+print("\nSaved: data/test_mode/razorpay_enriched_orders.csv")

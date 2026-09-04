@@ -5,10 +5,10 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 from datetime import datetime, timezone
 
-rzp_df = pd.read_csv("test_mode_dSets/razorpay_enriched_orders.csv")
+rzp_df = pd.read_csv("data/test_mode/razorpay_enriched_orders.csv")
 
-X_trainpool = pd.read_csv("dSets/X_trainpool.csv")
-y_trainpool = pd.read_csv("dSets/y_trainpool.csv").squeeze()
+X_trainpool = pd.read_csv("data/splits/X_trainpool.csv")
+y_trainpool = pd.read_csv("data/splits/y_trainpool.csv").squeeze()
 
 log_reg_final = Pipeline([
     ("scaler", StandardScaler()),
@@ -19,7 +19,7 @@ scaler = log_reg_final.named_steps["scaler"]
 model = log_reg_final.named_steps["model"]
 feature_names = X_trainpool.columns
 
-mean_return_rate = pd.read_csv("dSets/synthetic_orders_model.csv")["customer_past_return_rate"].mean()
+mean_return_rate = pd.read_csv("data/interim/synthetic_orders_model.csv")["customer_past_return_rate"].mean()
 
 DECISION_THRESHOLD = 0.16
 
@@ -98,5 +98,5 @@ for _, row in audit_log.iterrows():
           f"prob={row['risk_probability']:.3f} -> {row['action_taken']}")
     print(f"  {row['explanation']}\n")
 
-audit_log.to_csv("test_mode_dSets/razorpay_audit_log.csv", index=False)
-print("Saved: test_mode_dSets/razorpay_audit_log.csv")
+audit_log.to_csv("data/test_mode/razorpay_audit_log.csv", index=False)
+print("Saved: data/test_mode/razorpay_audit_log.csv")
